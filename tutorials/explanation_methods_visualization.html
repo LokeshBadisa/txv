@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Let’s install the txv package. &#8212; txv 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/explanation_methods_visualization';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">txv 0.0.1 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        txv reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../tutorials.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_reference.html">
+                        txv reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../tutorials.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Let’s...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><a class="reference external" href="https://colab.research.google.com/github/LokeshBadisa/txv/blob/main/tutorials/explanation_methods_visualization.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section id="Let's-install-the-txv-package.">
+<h1>Let’s install the txv package.<a class="headerlink" href="#Let's-install-the-txv-package." title="Permalink to this heading">#</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install txv
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Import-necessary-libraries.">
+<h1>Import necessary libraries.<a class="headerlink" href="#Import-necessary-libraries." title="Permalink to this heading">#</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
+sys.path.append(&#39;..&#39;)
+from txv.exp import *
+from txv.utils import *
+from txv.vit import *
+import matplotlib.pyplot as plt
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Model-Initialization">
+<h1>Model Initialization<a class="headerlink" href="#Model-Initialization" title="Permalink to this heading">#</a></h1>
+<section id="We-will-use-vit-base-patch16-224-model-in-this-tutorial.-You-can-try-this-with-other-models-in-Available-Models-section-as-well.-Note-that-this-package-works-with-models-in-Available-Models-section-only.-We-initialize-2-models,-one-with-lrp=True-and-other-with-lrp=False.-LRP-based-explanation-methods-like-LRP-and-Beyond-Attention-require-relevance-propogation-which-is-enabled-through-lrp=True.">
+<h2>We will use vit-base-patch16-224 model in this tutorial. You can try this with other models in <code class="docutils literal notranslate"><span class="pre">Available</span> <span class="pre">Models</span></code> section as well. Note that this package works with models in <code class="docutils literal notranslate"><span class="pre">Available</span> <span class="pre">Models</span></code> section only. We initialize 2 models, one with <code class="docutils literal notranslate"><span class="pre">lrp=True</span></code> and other with <code class="docutils literal notranslate"><span class="pre">lrp=False</span></code>. LRP based explanation methods like LRP and Beyond Attention require relevance propogation which is enabled through <code class="docutils literal notranslate"><span class="pre">lrp=True</span></code>.<a class="headerlink" href="#We-will-use-vit-base-patch16-224-model-in-this-tutorial.-You-can-try-this-with-other-models-in-Available-Models-section-as-well.-Note-that-this-package-works-with-models-in-Available-Models-section-only.-We-initialize-2-models,-one-with-lrp=True-and-other-with-lrp=False.-LRP-based-explanation-methods-like-LRP-and-Beyond-Attention-require-relevance-propogation-which-is-enabled-through-lrp=True." title="Permalink to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>device = torch.device(&#39;cuda:0&#39;)
+model1 = vit_base_patch16_224(lrp=True).to(device)
+model2 = vit_base_patch16_224().to(device)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Read the image
+image = read_image(&#39;../images/zebra-elephant.png&#39;).to(device)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Generate the output
+output = model1(image)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Print the top classes
+print_top_classes(output)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Top 5 classes:
+        340 : zebra                                             value = 12.749   prob = 94.2%
+        386 : African elephant, Loxodonta africana              value = 9.485    prob = 3.6%
+        101 : tusker                                            value = 7.923    prob = 0.8%
+        385 : Indian elephant, Elephas maximus                  value = 7.684    prob = 0.6%
+        352 : impala, Aepyceros melampus                        value = 5.946    prob = 0.1%
+        351 : hartebeest                                        value = 5.460    prob = 0.1%
+        343 : warthog                                           value = 5.416    prob = 0.1%
+        9 : ostrich, Struthio camelus                           value = 5.292    prob = 0.1%
+        353 : gazelle                                           value = 5.248    prob = 0.1%
+        293 : cheetah, chetah, Acinonyx jubatus                 value = 4.881    prob = 0.0%
+</pre></div></div>
+</div>
+</section>
+<section id="Note-that-we-use-model1-for-LRP-which-is-initialized-with-lrp=True-which-is-not-used-in-further-explanation-methods(except-Beyond-Attention).">
+<h2>Note that we use <code class="docutils literal notranslate"><span class="pre">model1</span></code> for LRP which is initialized with <code class="docutils literal notranslate"><span class="pre">lrp=True</span></code> which is not used in further explanation methods(except Beyond Attention).<a class="headerlink" href="#Note-that-we-use-model1-for-LRP-which-is-initialized-with-lrp=True-which-is-not-used-in-further-explanation-methods(except-Beyond-Attention)." title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section id="LRP">
+<h1>LRP<a class="headerlink" href="#LRP" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lrp = LRP(model1)
+mask_lrp = lrp.explain(image)
+inp,mask_lrp = postprocess(image, mask_lrp)
+cam = show_exp_on_image(inp[0], mask_lrp[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_13_0.png" src="../_images/tutorials_explanation_methods_visualization_13_0.png" />
+</div>
+</div>
+</section>
+<section id="Integrated-Gradients">
+<h1>Integrated Gradients<a class="headerlink" href="#Integrated-Gradients" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ig = IntegratedGradients(model2)
+mask_ig = ig.explain(image)
+inp,mask_ig = postprocess(image, mask_ig)
+cam = show_exp_on_image(inp[0], mask_ig[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_15_0.png" src="../_images/tutorials_explanation_methods_visualization_15_0.png" />
+</div>
+</div>
+</section>
+<section id="Raw-Attention">
+<h1>Raw Attention<a class="headerlink" href="#Raw-Attention" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ra = RawAttention(model2)
+mask_ra = ra.explain(image,7)
+
+# Take mean over all the heads and then visualize CLS token
+mask_ra = mask_ra.mean(dim=1)[:,0,1:]
+
+#Uncomment the below line for distilled models as they have DIST token also.
+#You can try visualizing the DIST token as well.
+# mask_ra = mask_ra.mean(dim=1)[:,0,2:]
+
+inp,mask_ra = postprocess(image, mask_ra)
+cam = show_exp_on_image(inp[0], mask_ra[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_17_0.png" src="../_images/tutorials_explanation_methods_visualization_17_0.png" />
+</div>
+</div>
+</section>
+<section id="Attention-Rollout">
+<h1>Attention Rollout<a class="headerlink" href="#Attention-Rollout" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ar = AttentionRollout(model2)
+mask_ar = ar.explain(image,layer=1)
+inp,mask_ar = postprocess(image, mask_ar)
+cam = show_exp_on_image(inp[0], mask_ar[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_19_0.png" src="../_images/tutorials_explanation_methods_visualization_19_0.png" />
+</div>
+</div>
+</section>
+<section id="GradSAM">
+<h1>GradSAM<a class="headerlink" href="#GradSAM" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gradsam = GradSAM(model2)
+mask_gradsam = gradsam.explain(image)
+inp,mask_gradsam = postprocess(image, mask_gradsam)
+cam = show_exp_on_image(inp[0], mask_gradsam[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_21_0.png" src="../_images/tutorials_explanation_methods_visualization_21_0.png" />
+</div>
+</div>
+</section>
+<section id="Beyond-Attention">
+<h1>Beyond Attention<a class="headerlink" href="#Beyond-Attention" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ba = BeyondAttention(model1)
+mask_ba = ba.explain(image)
+inp,mask_ba = postprocess(image,mask_ba)
+cam = show_exp_on_image(inp[0],mask_ba[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_23_0.png" src="../_images/tutorials_explanation_methods_visualization_23_0.png" />
+</div>
+</div>
+</section>
+<section id="Generic-Attention">
+<h1>Generic Attention<a class="headerlink" href="#Generic-Attention" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ga = GenericAttention(model2)
+mask_ga = ga.explain(image)
+inp,mask_ga = postprocess(image,mask_ga)
+cam = show_exp_on_image(inp[0],mask_ga[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_25_0.png" src="../_images/tutorials_explanation_methods_visualization_25_0.png" />
+</div>
+</div>
+</section>
+<section id="Transition-Attention-Map(TAM)">
+<h1>Transition Attention Map(TAM)<a class="headerlink" href="#Transition-Attention-Map(TAM)" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Note that TAM works with ViT-based models only.
+tam = TAM(model2)
+mask_tam = tam.explain(image)
+inp,mask_tam = postprocess(image, mask_tam)
+cam = show_exp_on_image(inp[0], mask_tam[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_27_0.png" src="../_images/tutorials_explanation_methods_visualization_27_0.png" />
+</div>
+</div>
+</section>
+<section id="Beyond-Intuition---token-wise">
+<h1>Beyond Intuition - token-wise<a class="headerlink" href="#Beyond-Intuition---token-wise" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bi = BeyondIntuition(model2)
+mask_bi = bi.explain(input=image,method=&#39;token&#39;)
+inp,mask_bi = postprocess(image,mask_bi)
+cam = show_exp_on_image(inp[0],mask_bi[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_29_0.png" src="../_images/tutorials_explanation_methods_visualization_29_0.png" />
+</div>
+</div>
+</section>
+<section id="Beyond-Intuition---head-wise">
+<h1>Beyond Intuition - head-wise<a class="headerlink" href="#Beyond-Intuition---head-wise" title="Permalink to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bi = BeyondIntuition(model2)
+mask_bi = bi.explain(image,method=&#39;head&#39;)
+inp,mask_bi = postprocess(image,mask_bi)
+cam = show_exp_on_image(inp[0],mask_bi[0])
+plt.imshow(cam)
+plt.axis(&#39;off&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_explanation_methods_visualization_31_0.png" src="../_images/tutorials_explanation_methods_visualization_31_0.png" />
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Let’s install the txv package.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Import-necessary-libraries.">Import necessary libraries.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Model-Initialization">Model Initialization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#We-will-use-vit-base-patch16-224-model-in-this-tutorial.-You-can-try-this-with-other-models-in-Available-Models-section-as-well.-Note-that-this-package-works-with-models-in-Available-Models-section-only.-We-initialize-2-models,-one-with-lrp=True-and-other-with-lrp=False.-LRP-based-explanation-methods-like-LRP-and-Beyond-Attention-require-relevance-propogation-which-is-enabled-through-lrp=True.">We will use vit-base-patch16-224 model in this tutorial. You can try this with other models in <code class="docutils literal notranslate"><span class="pre">Available</span> <span class="pre">Models</span></code> section as well. Note that this package works with models in <code class="docutils literal notranslate"><span class="pre">Available</span> <span class="pre">Models</span></code> section only. We initialize 2 models, one with <code class="docutils literal notranslate"><span class="pre">lrp=True</span></code> and other with <code class="docutils literal notranslate"><span class="pre">lrp=False</span></code>. LRP based explanation methods like LRP and Beyond Attention require relevance propogation which is enabled through <code class="docutils literal notranslate"><span class="pre">lrp=True</span></code>.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Note-that-we-use-model1-for-LRP-which-is-initialized-with-lrp=True-which-is-not-used-in-further-explanation-methods(except-Beyond-Attention).">Note that we use <code class="docutils literal notranslate"><span class="pre">model1</span></code> for LRP which is initialized with <code class="docutils literal notranslate"><span class="pre">lrp=True</span></code> which is not used in further explanation methods(except Beyond Attention).</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#LRP">LRP</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Integrated-Gradients">Integrated Gradients</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Raw-Attention">Raw Attention</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Attention-Rollout">Attention Rollout</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#GradSAM">GradSAM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Beyond-Attention">Beyond Attention</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Generic-Attention">Generic Attention</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Transition-Attention-Map(TAM)">Transition Attention Map(TAM)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Beyond-Intuition---token-wise">Beyond Intuition - token-wise</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Beyond-Intuition---head-wise">Beyond Intuition - head-wise</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Lokesh Badisa.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
