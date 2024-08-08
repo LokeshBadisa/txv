@@ -1,8 +1,9 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![docs](https://img.shields.io/github/workflow/status/LokeshBadisa/txv/Build%20and%20Deploy%20Documentation?label=docs&style=flat-square)
- ![PyPI Version](https://img.shields.io/pypi/v/txv)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![docs](https://img.shields.io/github/workflows/status/LokeshBadisa/txv/Build%20and%20Deploy%20Documentation?label=docs&style=flat-square)
+ ![PyPI version](https://img.shields.io/badge/pypi-v0.0.1-blue)
 
 
-# txv
+
+# txv (Transformer eXplainability - Vision)
 
 txv is a vision transformers explainability package. It provides CAM like visualization for vision transformers. It is built on the top of [transformerinterp](https://github.com/jiaminchen-1031/transformerinterp) and [Transformer-Explainability](https://github.com/hila-chefer/Transformer-Explainability) repositories.
 
