@@ -332,7 +332,7 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install txv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># !pip install txv
 </pre></div>
 </div>
 </div>
@@ -345,7 +345,9 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from txv.vit import vit_base_patch16_224
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
+sys.path.append(&#39;..&#39;)
+from txv.vit import vit_base_patch16_224
 from txv.utils import read_image, postprocess, show_exp_on_image
 import torch
 import matplotlib.pyplot as plt
@@ -370,8 +372,8 @@ model = vit_base_patch16_224().to(device)
 </div>
 </div>
 </section>
-<section id="Turn-on-saving-of-the-model-internals-to-visualize-them-in-the-next-steps.-Attention-map-and-it's-gradients-are-saved-by-default.-Here-we-are-saving-7th-block's-(0-indexing)-Q,-K-and-V-matrices.-You-can-save-other-block's-matrices-as-well.">
-<h2>Turn on saving of the model internals to visualize them in the next steps. Attention map and it’s gradients are saved by default. Here we are saving 7th block’s (0-indexing) Q, K and V matrices. You can save other block’s matrices as well.<a class="headerlink" href="#Turn-on-saving-of-the-model-internals-to-visualize-them-in-the-next-steps.-Attention-map-and-it's-gradients-are-saved-by-default.-Here-we-are-saving-7th-block's-(0-indexing)-Q,-K-and-V-matrices.-You-can-save-other-block's-matrices-as-well." title="Permalink to this heading">#</a></h2>
+<section id="Turn-on-saving-of-the-model-internals-to-visualize-them-in-the-next-steps.-Here-we-are-saving-7th-block's-(0-indexing)-Q,-K,-V-and-attention-matrices.-You-can-save-other-block's-matrices-as-well.">
+<h2>Turn on saving of the model internals to visualize them in the next steps. Here we are saving 7th block’s (0-indexing) Q, K, V and attention matrices. You can save other block’s matrices as well.<a class="headerlink" href="#Turn-on-saving-of-the-model-internals-to-visualize-them-in-the-next-steps.-Here-we-are-saving-7th-block's-(0-indexing)-Q,-K,-V-and-attention-matrices.-You-can-save-other-block's-matrices-as-well." title="Permalink to this heading">#</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -379,6 +381,7 @@ model = vit_base_patch16_224().to(device)
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model.blocks[7].attn.issaveq = True
 model.blocks[7].attn.issavek = True
 model.blocks[7].attn.issavev = True
+model.blocks[7].attn.save_att = True
 </pre></div>
 </div>
 </div>
@@ -447,7 +450,7 @@ plt.imshow(cam)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f119e3cbeb0&gt;
+&lt;matplotlib.image.AxesImage at 0x7f16e5f676d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -477,7 +480,7 @@ plt.imshow(cam)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f119e2efc70&gt;
+&lt;matplotlib.image.AxesImage at 0x7f16c05ebe20&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -516,7 +519,7 @@ plt.imshow(cam)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f119e2efac0&gt;
+&lt;matplotlib.image.AxesImage at 0x7f16c05eb820&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -557,7 +560,7 @@ plt.imshow(cam)
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Let’s install the txv package</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Import-necessary-libraries.">Import necessary libraries.</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#We-will-use-vit-base-patch16-224-model-in-this-tutorial.-You-can-try-this-with-other-models-in-Available-Models-section-as-well.-Note-that-this-package-works-with-models-in-Available-Models-section-only.">We will use vit-base-patch16-224 model in this tutorial. You can try this with other models in <code class="docutils literal notranslate"><span class="pre">Available</span> <span class="pre">Models</span></code> section as well. Note that this package works with models in <code class="docutils literal notranslate"><span class="pre">Available</span> <span class="pre">Models</span></code> section only.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Turn-on-saving-of-the-model-internals-to-visualize-them-in-the-next-steps.-Attention-map-and-it's-gradients-are-saved-by-default.-Here-we-are-saving-7th-block's-(0-indexing)-Q,-K-and-V-matrices.-You-can-save-other-block's-matrices-as-well.">Turn on saving of the model internals to visualize them in the next steps. Attention map and it’s gradients are saved by default. Here we are saving 7th block’s (0-indexing) Q, K and V matrices. You can save other block’s matrices as well.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Turn-on-saving-of-the-model-internals-to-visualize-them-in-the-next-steps.-Here-we-are-saving-7th-block's-(0-indexing)-Q,-K,-V-and-attention-matrices.-You-can-save-other-block's-matrices-as-well.">Turn on saving of the model internals to visualize them in the next steps. Here we are saving 7th block’s (0-indexing) Q, K, V and attention matrices. You can save other block’s matrices as well.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Extract-the-query-matrix-and-take-mean-across-heads-and-head_dim.-Visualize-with-removing-the-CLS-token.-postprocess-does-normalization-and-bilinear-interpolation-of-the-query.-show_exp_on_image-merges-image-and-query-to-show-the-resultant-visualization.">Extract the query matrix and take mean across heads and head_dim. Visualize with removing the CLS token. <code class="docutils literal notranslate"><span class="pre">postprocess</span></code> does normalization and bilinear interpolation of the query. <code class="docutils literal notranslate"><span class="pre">show_exp_on_image</span></code> merges image and query to show the resultant visualization.</a></li>
 </ul>
 </li>
