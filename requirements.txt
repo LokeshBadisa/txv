@@ -1,0 +1,8 @@
+einops
+numpy
+opencv-python
+Pillow
+Requests
+torch
+torchvision
+tqdm

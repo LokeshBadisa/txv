@@ -1,0 +1,11 @@
+#Extra packages over the base requirements
+
+#Docs
+pydata-sphinx-theme
+sphinx-design
+nbsphinx_link
+sphinx==7.0.0
+docutils==0.19
+
+#Build
+setuptools>=61.0
