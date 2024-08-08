@@ -172,15 +172,14 @@ class Block(nn.Module):
             num_heads: int = 12,
             mlp_ratio: float = 4.,
             qkv_bias: bool = False,
-            save_att: bool = False,
-            save_qkv: bool = False,
+            save_att: bool = True,
             act_layer: nn.Module = nn.GELU,
             norm_layer: nn.Module = nn.LayerNorm,
             mlp_layer: Type[nn.Module] = Mlp,
     ) -> None:
         super().__init__()
         self.norm1 = norm_layer(embed_dim)
-        self.attn = Attention(embed_dim, num_heads, qkv_bias, save_att, save_qkv) 
+        self.attn = Attention(embed_dim, num_heads, qkv_bias, save_att) 
         self.norm2 = norm_layer(embed_dim)
         self.mlp = mlp_layer(embed_dim, int(embed_dim * mlp_ratio), act_layer)
         
@@ -225,7 +224,6 @@ class VisionTransformer(nn.Module):
             num_heads: int = 12,
             mlp_ratio: float = 4.,
             save_att: bool = False,
-            save_qkv: bool = False,
             qkv_bias: bool = False,
             n_last_blocks: int = 1,
             avgpool_patchtokens: bool = False,
@@ -250,8 +248,7 @@ class VisionTransformer(nn.Module):
                                         num_heads,
                                         mlp_ratio,
                                         qkv_bias,
-                                        save_att,
-                                        save_qkv,  
+                                        save_att, 
                                         norm_layer=norm_layer,
                                         mlp_layer=mlp_layer
                                         ) for _ in range(depth)])

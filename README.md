@@ -15,6 +15,21 @@ Tutorial : [Tutorials](https://lokeshbadisa.github.io/txv/tutorials)
 
 <br>
 
+## Installation
+  
+  ### For Users
+  ```bash
+  pip install txv
+  ```
+
+  ### For Development/latest version
+  ```bash
+  git clone git@github.com:LokeshBadisa/txv.git
+  cd txv
+  pip install -e .
+  ```
+
+
 ## Example
 
 ```python

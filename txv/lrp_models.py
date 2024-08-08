@@ -39,7 +39,6 @@ class Attention(nn.Module):
                 num_heads: int = 12,
                 qkv_bias: bool = False, 
                 save_att: bool = True,
-                save_qkv: bool = True,
                 save_rel: bool = False,
     ) -> None:
         super().__init__()
@@ -52,11 +51,10 @@ class Attention(nn.Module):
         self.softmax = Softmax(dim=-1)
         self.proj = Linear(embed_dim, embed_dim)
         self.save_att = save_att
-        self.save_qkv = save_qkv
         self.save_rel = save_rel
-        self.issaveq = save_qkv
-        self.issavek = save_qkv
-        self.issavev = save_qkv
+        self.issaveq = False
+        self.issavek = False
+        self.issavev = False
 
         # A = Q*K^T
         self.matmul1 = einsum('bhid,bhjd->bhij')
@@ -72,7 +70,7 @@ class Attention(nn.Module):
         self.q = None
         self.k = None
         self.v = None
-        self.output = None
+        # self.output = None
 
     def save_attn(self, att: torch.Tensor) -> None:
         self.attention_map = att
@@ -115,12 +113,12 @@ class Attention(nn.Module):
         assert self.input is not None, "Please do forward pass before extracting input"
         return self.input
     
-    def save_output(self, out: torch.Tensor) -> None:
-        self.output = out
+    # def save_output(self, out: torch.Tensor) -> None:
+    #     self.output = out
 
-    def get_output(self) -> torch.Tensor:
-        assert self.output is not None, "Please do forward pass before extracting output"
-        return self.output
+    # def get_output(self) -> torch.Tensor:
+    #     assert self.output is not None, "Please do forward pass before extracting output"
+    #     return self.output
     
     # def save_v_cam(self, cam):
     #     self.v_cam = cam
@@ -228,7 +226,6 @@ class Block(nn.Module):
             mlp_ratio: float = 4.,
             qkv_bias: bool = False,
             save_att: bool = False,
-            save_qkv: bool = False,
             save_rel: bool = False,
             act_layer: nn.Module = GELU,
             norm_layer: nn.Module = LayerNorm,
@@ -236,7 +233,7 @@ class Block(nn.Module):
     ) -> None:
         super().__init__()
         self.norm1 = norm_layer(embed_dim)
-        self.attn = Attention(embed_dim, num_heads, qkv_bias, save_att, save_qkv, save_rel) 
+        self.attn = Attention(embed_dim, num_heads, qkv_bias, save_att, save_rel) 
         self.norm2 = norm_layer(embed_dim)
         self.mlp = mlp_layer(embed_dim, int(embed_dim * mlp_ratio), act_layer)
         
@@ -295,7 +292,6 @@ class LRPVisionTransformer(nn.Module):
             num_heads: int = 12,
             mlp_ratio: float = 4.,
             save_att: bool = False,
-            save_qkv: bool = False,
             save_rel: bool = False,
             qkv_bias: bool = False,  
             n_last_blocks: Optional[int] = None,
@@ -324,7 +320,6 @@ class LRPVisionTransformer(nn.Module):
                                         mlp_ratio,
                                         qkv_bias,
                                         save_att,
-                                        save_qkv,
                                         save_rel,
                                         norm_layer=norm_layer,
                                         mlp_layer=mlp_layer
